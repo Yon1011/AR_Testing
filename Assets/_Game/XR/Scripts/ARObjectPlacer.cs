@@ -38,21 +38,16 @@ public class ARObjectPlacer : MonoBehaviour
     }
     void OnTouchDown(EnhancedTouch.Finger finger)
     {
-        // if (finger.index != 0) return;
-        // if (raycastManager.Raycast(finger.currentTouch.screenPosition, hits, TrackableType.PlaneWithinPolygon))
-        // {
-        //     Pose hitPose = hits[0].pose;
-        //     if (spawnedObject == null)
-        //     {
-        //         spawnedObject = Instantiate(objectPrefab, hitPose.position, hitPose.rotation);
-        //         spawnedObject.transform.localScale = Vector3.one;
-        //     }
-        //     else
-        //     {
-        //         spawnedObject.transform.position = hitPose.position;
-        //         spawnedObject.transform.rotation = hitPose.rotation;
-        //     }
-        // }
+        if (finger.index != 0) return;
+        if (raycastManager.Raycast(finger.currentTouch.screenPosition, hits, TrackableType.PlaneWithinPolygon))
+        {
+            Pose hitPose = hits[0].pose;
+            if (spawnedObject != null)
+            {
+                spawnedObject.transform.position = hitPose.position;
+                spawnedObject.transform.rotation = hitPose.rotation;
+            }
+        }
     }
 
     void OnPlaneChanged(ARPlanesChangedEventArgs args)
@@ -63,7 +58,7 @@ public class ARObjectPlacer : MonoBehaviour
             var placingPos = arCamera.ScreenToWorldPoint(new Vector3(midScreen.x, midScreen.y, placingDepth));
             spawnedObject = Instantiate(objectPrefab);
             spawnedObject.transform.position = placingPos;
-            spawnedObject.transform.localScale = Vector3.one/2;
+            spawnedObject.transform.localScale = Vector3.one / 4;
         }
     }
 }
