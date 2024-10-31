@@ -158,7 +158,7 @@ MonoBehaviour:
   m_OriginBaseGameObject: {fileID: 336889749}
   m_CameraFloorOffsetObject: {fileID: 1965693772}
   m_RequestedTrackingOriginMode: 1
-  m_CameraYOffset: 1.1176
+  m_CameraYOffset: 0.5
 --- !u!4 &336889751
 Transform:
   m_ObjectHideFlags: 0
@@ -214,6 +214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366a56ee2b74326428f216d6e97cfc2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arCamera: {fileID: 954101615}
+  placingDepth: 0.5
   objectPrefab: {fileID: 3916708227098804796, guid: f7039af1eb604ac4b805e550d276e2e1, type: 3}
 --- !u!1 &705507993
 GameObject:
@@ -720,12 +722,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9600f816eaf3fa4281caf177fc49a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CameraToFace: {fileID: 0}
   m_ObjectPrefab: {fileID: 3916708227098804796, guid: f7039af1eb604ac4b805e550d276e2e1, type: 3}
-  m_SpawnOptionIndex: 0
   m_OnlySpawnInView: 1
   m_ViewportPeriphery: 0.15
-  m_ApplyRandomAngleAtSpawn: 1
   m_SpawnAngleRange: 45
 --- !u!1 &1965693772
 GameObject:

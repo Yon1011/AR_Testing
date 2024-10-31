@@ -8,7 +8,6 @@ namespace Clayno.AR
 {
     public class ObjectSpawner : MonoBehaviour
     {
-        [SerializeField]
         Camera m_CameraToFace;
 
         public Camera cameraToFace
@@ -25,22 +24,10 @@ namespace Clayno.AR
         GameObject m_ObjectPrefab;
 
         [SerializeField]
-        int m_SpawnOptionIndex = -1;
-
-        public int spawnOptionIndex
-        {
-            get => m_SpawnOptionIndex;
-            set => m_SpawnOptionIndex = value;
-        }
-
-        [SerializeField]
         bool m_OnlySpawnInView = true;
 
         [SerializeField]
         float m_ViewportPeriphery = 0.15f;
-
-        [SerializeField]
-        bool m_ApplyRandomAngleAtSpawn = true;
 
         [SerializeField]
         float m_SpawnAngleRange = 45f;
@@ -55,11 +42,6 @@ namespace Clayno.AR
         {
             if (m_CameraToFace == null)
                 m_CameraToFace = Camera.main;
-        }
-
-        public void RandomizeSpawnOption()
-        {
-            m_SpawnOptionIndex = -1;
         }
 
         public bool TrySpawnObject(Vector3 spawnPoint, Vector3 spawnNormal)
@@ -84,13 +66,6 @@ namespace Clayno.AR
             var forward = facePosition - spawnPoint;
             BurstMathUtility.ProjectOnPlane(forward, spawnNormal, out var projectedForward);
             newObject.transform.rotation = Quaternion.LookRotation(projectedForward, spawnNormal);
-
-            if (m_ApplyRandomAngleAtSpawn)
-            {
-                var randomRotation = UnityEngine.Random.Range(-m_SpawnAngleRange, m_SpawnAngleRange);
-                newObject.transform.Rotate(Vector3.up, randomRotation);
-            }
-
             objectSpawned?.Invoke(newObject);
             return true;
         }
