@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Game/Sensors/CameraSensor.unity
+    guid: 917ee0c11c8284d49a1151abc6b913aa
+  - enabled: 0
     path: Assets/_Game/XR/Scenes/AR.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
